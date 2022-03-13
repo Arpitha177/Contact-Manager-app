@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+    <title>Contacts App</title>
+	<script type="text/javascript" >  
+        function InsertRecord()  
+        {  
+		alert("Signin inprogress)
+            var email= document.getElementById('signup-email').value;  
+            var Password = document.getElementById('signup-password').value;
+           var ConfirmPassword = document.getElementById('signup-password-confirm').value;  
+            if (email.length != 0 || Password.length !=0 || confirmPassword.length !=0)  
+            {  
+                var connection = new ActiveXObject("ADODB.Connection");  
+                var connectionstring = "Data Source=.;Initial Catalog=EmpDetail;Persist Security Info=True;User ID=sa;Password=****;Provider=SQLOLEDB";  
+                connection.Open(connectionstring);  
+                var rs = new ActiveXObject("ADODB.Recordset");  
+                rs.Open("insert into Emp_Info values('" + email + "','" + Password + "','" + confirmPassword + "')", connection);  
+                alert("Register Successfuly");  
+                txtid.value = " ";  
+                connection.close();  
+            }  
+            else  
+            {              
+                alert("Please Enter\n Username\n Password \n Confirm password");  
+            }  
+        }     
+
+	function login()  
+        {  
+		alert("login inprogress)
+            var email= document.getElementById('login-email').value;  
+            var Password = document.getElementById('login-password').value;  
+            if (email.length != 0 || Password.length !=0)  
+            {  
+                var connection = new ActiveXObject("ADODB.Connection");  
+                var connectionstring = "Data Source=.;Initial Catalog=EmpDetail;Persist Security Info=True;User ID=sa;Password=****;Provider=SQLOLEDB";  
+                connection.Open(connectionstring);  
+                var rs = new ActiveXObject("ADODB.Recordset");  
+                rs.Open(select * from tbl_login where username='"++"' and password="++")", connection);  
+                alert("Login Successfuly");  
+                txtid.value = " ";  
+                connection.close();  
+            }  
+            else  
+            {              
+                alert("Please Enter\n Username\n Password ");  
+            }  
+        }     
+    </script> 
+</head>
+<body>
+    <section class="forms-section">
+        <h1 class="section-title">Contacts</h1>
+        <div class="forms">
+          <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login">
+              Login
+              <span class="underline"></span>
+            </button>
+            <form class="form form-login">
+              <fieldset>
+                <legend>Please, enter your email and password for login.</legend>
+                <div class="input-block">
+                  <label for="login-email">E-mail</label>
+                  <input id="login-email" type="email" required>
+                </div>
+                <div class="input-block">
+                  <label for="login-password">Password</label>
+                  <input id="login-password" type="password" required>
+                </div>
+              </fieldset>
+              
+		<a href ='file:///C:/Users/Hai/Desktop/contacts/contacts%20page/main.html'><input type="button" name="login" id="login" value="Login" onclick="insertRecord()"></a>
+            </form>
+          </div>
+          <div class="form-wrapper">
+            <button type="button" class="switcher switcher-signup">
+              Sign Up
+              <span class="underline"></span>
+            </button>
+            <form class="form form-signup">
+              <fieldset>
+                <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                <div class="input-block">
+                  <label for="signup-email">E-mail</label>
+                  <input id="signup-email" type="email" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password">Password</label>
+                  <input id="signup-password" type="password" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password-confirm">Confirm password</label>
+                  <input id="signup-password-confirm" type="password" required>
+                </div>
+              </fieldset>
+              <a href ='file:///C:/Users/Hai/Desktop/contacts/contacts%20page/main.html'><input type="button" name="login" id="login" value="Signin" onclick="insertRecord()"></a>
+            </form>
+          </div>
+        </div>
+      </section>
+      <footer text-align: center>Designed by Bharadwaj</footer>
+</body>
+<script src="script.js"></script>
+</html>
